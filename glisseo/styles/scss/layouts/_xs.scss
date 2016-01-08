@@ -1,0 +1,9 @@
+/**
+ * @file
+ *
+ * XS media query styles.
+ */
+
+@include breakpoint($xs-media) {
+  @include layout((container: auto));
+}
