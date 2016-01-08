@@ -1,0 +1,14 @@
+/**
+ * @file
+ *
+ * LG media query styles.
+ */
+
+@include breakpoint($lg-media) {
+  @include layout((container: 1170px));
+
+  .container,
+  #main {
+    @include container();
+  }
+}
