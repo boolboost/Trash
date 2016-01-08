@@ -1,3 +1,9 @@
+/**
+ * @file
+ *
+ * SM media query styles.
+ */
+
 @include breakpoint($sm-media) {
   @include layout((container: 750px));
 
