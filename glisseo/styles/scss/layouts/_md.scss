@@ -1,0 +1,14 @@
+/**
+ * @file
+ *
+ * MD media query styles.
+ */
+
+@include breakpoint($md-media) {
+  @include layout((container: 970px));
+
+  .container,
+  #main {
+    @include container();
+  }
+}
