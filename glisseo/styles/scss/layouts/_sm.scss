@@ -1,0 +1,40 @@
+@include breakpoint($sm-media) {
+  @include layout((container: 750px));
+
+  .container,
+  #main {
+    @include container();
+  }
+
+  #sidebar-first {
+    @include span(3);
+  }
+
+  #sidebar-second {
+    @include span(3 last);
+  }
+
+  body.no-sidebars {
+    #content {
+      @include full();
+    }
+  }
+
+  body.sidebar-first.sidebar-second {
+    #content {
+      @include span(6);
+    }
+  }
+
+  body.sidebar-first:not(.sidebar-second) {
+    #content {
+      @include span(9 last);
+    }
+  }
+
+  body.sidebar-second:not(.sidebar-first) {
+    #content {
+      @include span(9);
+    }
+  }
+}
