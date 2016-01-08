@@ -1,0 +1,15 @@
+/**
+ * Layout for override
+ */
+$layout_base: map-remove($susy, container);
+
+/**
+ * Global box-sizing
+ */
+html {
+  box-sizing: border-box;
+
+  * {
+    box-sizing: inherit;
+  }
+}
