@@ -11,6 +11,10 @@
   #main {
     @include container();
   }
+  
+  #main {
+    min-width: container();
+  }
 
   #sidebar-first {
     @include span(3);
