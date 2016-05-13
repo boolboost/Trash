@@ -1,0 +1,17 @@
+@mixin stroke($width, $colour: #000) {
+  $shadow: 0 0 0 $colour;
+
+  @for $i from 0 through $width {
+    $shadow: $shadow,
+      -$i + px -$width + px 0 $colour,
+      $i + px -$width + px 0 $colour,
+      -$i + px $width + px 0 $colour,
+      $i + px $width + px 0 $colour,
+      -$width + px -$i + px 0 $colour,
+      $width + px -$i + px 0 $colour,
+      -$width + px $i + px 0 $colour,
+      $width + px $i + px 0 $colour,
+  }
+  
+  text-shadow: $shadow;
+}
