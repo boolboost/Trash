@@ -72,6 +72,7 @@ Style ctools dialog.
     .close {
       float: right;
       color: inherit;
+      -webkit-filter: brightness(1000%);
     }
   }
   
