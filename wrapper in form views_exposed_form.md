@@ -25,7 +25,7 @@ Add field label.
  * @form_id
  * views_exposed_form
  */
-function crm_theme_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+function hook_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
   // fixed label
   $filter = function (&$item, $key, $data) {
     if ($key{0} != '#' && is_array($item)) {
