@@ -17,7 +17,7 @@ function theme_preprocess_views_exposed_form(&$variables) {
 }
 ~~~
 
-Add field label.
+Add field label and fixed structure.
 ~~~php
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -26,12 +26,13 @@ Add field label.
  * views_exposed_form
  */
 function hook_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
-  // fixed label
+  // fixed structure elements
   $filter = function (&$item, $key, $data) {
     if ($key{0} != '#' && is_array($item)) {
       $info = &$data['info'];
       $callback = &$data['callback'];
 
+      // base label
       if (isset($info['filter-' . $key])) {
         $title = $info['filter-' . $key]['label'];
 
@@ -43,6 +44,33 @@ function hook_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
         }
       }
 
+      // range
+      if (!isset($item['#type']) && isset($item['min'], $item['max'])) {
+        $id = drupal_html_id('edit-' . $info['filter-' . $key]['value'] . '-wrapper');
+        $classes = drupal_html_class('views-exposed-widget views-widget-filter-' . $key);
+
+        // markup
+        $prefix = format_string('<div id="@id" class="@classes">', array(
+          '@id' => $id,
+          '@classes' => $classes,
+        ));
+
+        // label
+        if ($item['value']['#title']) {
+          $prefix .= format_string('<label for="@for">!label</label>', array(
+            '@for' => $id,
+            '!label' => $item['value']['#title'],
+          ));
+        }
+
+        // content
+        $prefix .= '<div class="views-widget">';
+
+        $item['#prefix'] = $prefix;
+        $item['#suffix'] = '</div></div>';
+      }
+
+      // submit
       if ($key == 'submit') {
         $item['#prefix'] = '<div class="views-exposed-widget views-submit-button">';
         $item['#suffix'] = '</div>';
@@ -56,13 +84,11 @@ function hook_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
     'info' => &$form['#info'],
     'callback' => $filter,
   ));
-}
 ~~~
 
 Template "views-exposed-form.tpl.php".
 ~~~php
 <?php
-
 /**
  * @file
  * This template handles the layout of the views exposed filter form.
