@@ -8,7 +8,8 @@ function theme_preprocess_views_exposed_form(&$variables) {
   $variables['content'] = '';
   foreach ($variables['widgets'] as $key => $widget) {
     if (isset($widget->widget)) {
-      $field_name = preg_replace('/^filter-/', '', $key);
+      $field_name = preg_replace('/^edit-/', '', $widget->id);
+      $field_name = preg_replace('/\-/', '_', $field_name);
       $variables['content'] .= render($variables['form'][$field_name]);
     }
   }
@@ -32,9 +33,17 @@ function hook_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
       $info = &$data['info'];
       $callback = &$data['callback'];
 
+      // base key
+      $info_key = 'filter-' . $key;
+
+      // key taxonomy term
+      if (!isset($info[$info_key]) && isset($info[$info_key . '_tid'])) {
+        $info_key = $info_key . '_tid';
+      }
+
       // base label
-      if (isset($info['filter-' . $key])) {
-        $title = $info['filter-' . $key]['label'];
+      if (isset($info[$info_key])) {
+        $title = $info[$info_key]['label'];
 
         if (isset($item['#tree']) && $item['#tree']) {
           $item['value']['#title'] = $title;
@@ -46,7 +55,7 @@ function hook_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
 
       // range
       if (!isset($item['#type']) && isset($item['min'], $item['max'])) {
-        $id = drupal_html_id('edit-' . $info['filter-' . $key]['value'] . '-wrapper');
+        $id = drupal_html_id('edit-' . $info[$info_key]['value'] . '-wrapper');
         $classes = drupal_html_class('views-exposed-widget views-widget-filter-' . $key);
 
         // markup
@@ -84,6 +93,7 @@ function hook_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
     'info' => &$form['#info'],
     'callback' => $filter,
   ));
+}
 ~~~
 
 Template "views-exposed-form.tpl.php".
