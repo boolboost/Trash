@@ -1,3 +1,13 @@
+body {
+  @include flexbox();
+  @include flex-direction(column);
+  min-height: 100vh;
+}
+
+#main {
+  @include flex(1, 1);
+}
+
 .container,
 #main {
   @include media-containers();
