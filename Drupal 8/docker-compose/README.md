@@ -42,6 +42,14 @@ docker ps
 docker exec -i CONTAINER_ID mysql -udrupal -pdrupal drupal < dump.sql
 ~~~
 
+## Rebuild container
+
+The command is safe for data.
+
+~~~
+docker-compose up -d --force-recreate mariadb
+~~~
+
 # Settings docker-compose
 
 ## xdebug
