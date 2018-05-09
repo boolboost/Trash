@@ -90,7 +90,7 @@ services:
     labels:
       - 'traefik.backend=nginx'
       - 'traefik.port=80'
-      - 'traefik.frontend.rule=Host:NAME.localhost'
+      - 'traefik.frontend.rule=Host:DOMAIN'
 
 #  apache:
 #    image: wodby/php-apache:2.4-2.0.2
@@ -171,7 +171,7 @@ services:
     labels:
       - 'traefik.backend=mailhog'
       - 'traefik.port=8025'
-      - 'traefik.frontend.rule=Host:mailhog.NAME.localhost'
+      - 'traefik.frontend.rule=Host:mailhog.DOMAIN'
 
 #  nodejs:
 #    image: wodby/drupal-node:1.0-1.0.0
@@ -239,7 +239,7 @@ services:
     labels:
       - 'traefik.backend=portainer'
       - 'traefik.port=9000'
-      - 'traefik.frontend.rule=Host:portainer.NAME.localhost'
+      - 'traefik.frontend.rule=Host:portainer.DOMAIN'
 
   traefik:
     image: traefik
