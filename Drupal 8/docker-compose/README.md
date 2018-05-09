@@ -8,16 +8,6 @@ https://niklan.net/blog/172
 3. ```composer update```.
 4. Browser open `domain.localhost/update.php`.
 
-# Bashrc 
-
-File `~/.bashrc`.
-
-~~~
-alias drush="docker-compose exec --user 82 php drush"
-alias drupal="docker-compose exec --user 82 php drupal"
-alias composer="docker-compose exec --user 82 php composer"
-~~~
-
 # docker-compose.yml
 
 ## xdebug
