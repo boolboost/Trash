@@ -1,3 +1,5 @@
+# Templates
+
 ~~~
 views-view--[name]--[display_id].tpl.php
 views-view--[display_id].tpl.php
