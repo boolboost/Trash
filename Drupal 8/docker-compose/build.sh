@@ -1,9 +1,8 @@
 #!/bin/bash
 domain=$1
  
-sudo echo "127.0.0.1 $domain" >> /etc/hosts
-
-sed "s/DOMAIN/$domain" ./docker-compose.yml
+echo "127.0.0.1 $domain" | sudo tee -a /etc/hosts > /dev/null
+sed -i "s/DOMAIN/$domain/g" ./docker-compose.yml > /dev/null
 
 docker-compose up -d
 
