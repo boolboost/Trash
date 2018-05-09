@@ -5,7 +5,7 @@
 3. ```composer update```.
 4. Browser open `domain.localhost/update.php`.
 
-# Base docker-compose commands
+# Commands docker-compose
 
 ## Start
 
@@ -23,4 +23,16 @@ docker-compose stop
 
 ~~~
 docker-compose restart
+~~~
+
+# Settings docker-compose
+
+## xdebug
+
+~~~
+php:
+  environment:
+    PHP_XDEBUG: 1
+    PHP_XDEBUG_DEFAULT_ENABLE: 1
+    PHP_XDEBUG_REMOTE_CONNECT_BACK: 1
 ~~~
