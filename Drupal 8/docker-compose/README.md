@@ -5,19 +5,21 @@
 3. ```composer update```.
 4. Browser open `domain.localhost/update.php`.
 
-# Start
+# Base docker-compose commands
+
+## Start
 
 ~~~
 docker-compose up -d
 ~~~
 
-# Stop
+## Stop
 
 ~~~
 docker-compose stop
 ~~~
 
-# Restart
+## Restart
 
 ~~~
 docker-compose restart
