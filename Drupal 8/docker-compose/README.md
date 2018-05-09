@@ -8,6 +8,28 @@ https://niklan.net/blog/172
 3. ```composer update```.
 4. Browser open `domain.localhost/update.php`.
 
+# Bashrc 
+
+File `~/.bashrc`.
+
+~~~
+alias drush="docker-compose exec --user 82 php drush"
+alias drupal="docker-compose exec --user 82 php drupal"
+alias composer="docker-compose exec --user 82 php composer"
+~~~
+
+# docker-compose.yml
+
+## xdebug
+
+~~~
+php:
+  environment:
+    PHP_XDEBUG: 1
+    PHP_XDEBUG_DEFAULT_ENABLE: 1
+    PHP_XDEBUG_REMOTE_CONNECT_BACK: 1
+~~~
+
 # Commands docker-compose
 
 ## Start
@@ -54,16 +76,4 @@ docker-compose up -d --force-recreate mariadb
 
 ~~~
 ifconfig docker0
-~~~
-
-# Settings docker-compose
-
-## xdebug
-
-~~~
-php:
-  environment:
-    PHP_XDEBUG: 1
-    PHP_XDEBUG_DEFAULT_ENABLE: 1
-    PHP_XDEBUG_REMOTE_CONNECT_BACK: 1
 ~~~
