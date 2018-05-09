@@ -50,6 +50,12 @@ The command is safe for data.
 docker-compose up -d --force-recreate mariadb
 ~~~
 
+## Docker IP
+
+~~~
+ifconfig docker0
+~~~
+
 # Settings docker-compose
 
 ## xdebug
