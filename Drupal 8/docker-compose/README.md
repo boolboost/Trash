@@ -8,6 +8,23 @@ https://niklan.net/blog/172
 3. ```composer update```.
 4. Browser open `domain.localhost/update.php`.
 
+## Base Modules
+
+~~~
+composer require wikimedia/composer-merge-plugin
+composer require drupal/twig_tweak
+composer require drupal/devel
+~~~
+
+## Commerce Modules
+
+~~~
+composer require drupal/commerce
+composer require drupal/tvi
+composer require drupal/taxonomy_menu
+composer require drupal/search_api
+~~~
+
 # docker-compose.yml
 
 ## xdebug
