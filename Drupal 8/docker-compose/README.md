@@ -28,6 +28,20 @@ docker-compose stop
 docker-compose restart
 ~~~
 
+## Export mariadb
+
+~~~
+docker ps
+docker exec -i CONTAINER_ID mysqldump -udrupal -pdrupal drupal > dump.sql
+~~~
+
+## Import mariadb
+
+~~~
+docker ps
+docker exec -i CONTAINER_ID mysql -udrupal -pdrupal drupal < dump.sql
+~~~
+
 # Settings docker-compose
 
 ## xdebug
