@@ -1,3 +1,6 @@
+# Install
+https://niklan.net/blog/172
+
 # Build project
 
 1. ```bash build.sh domain.localhost```.
