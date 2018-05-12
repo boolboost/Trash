@@ -3,8 +3,7 @@
 ~~~
 sudo apt install npm
 
-curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-sudo apt-get install -y nodejs
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 sudo npm install -g gulp
 ~~~
