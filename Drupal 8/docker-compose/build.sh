@@ -14,6 +14,10 @@ rm -rf drupal-project/
 sudo setfacl -dR -m u:$(whoami):rwX -m u:82:rwX -m u:100:rX .
 sudo setfacl -R -m u:$(whoami):rwX -m u:82:rwX -m u:100:rX .
 
-composer update
+composer install
+
+composer require wikimedia/composer-merge-plugin
+composer require drupal/twig_tweak
+composer require drupal/devel
 
 exit 0
