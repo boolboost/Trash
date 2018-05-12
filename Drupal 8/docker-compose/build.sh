@@ -14,7 +14,7 @@ rm -rf drupal-project/
 sudo setfacl -dR -m u:$(whoami):rwX -m u:82:rwX -m u:100:rX .
 sudo setfacl -R -m u:$(whoami):rwX -m u:82:rwX -m u:100:rX .
 
-sed -i '/"installer-paths"/a "web/modules/custom/{$name}": ["type:drupal-custom-module"],\n"web/themes/custom/{$name}": ["type:drupal-custom-theme"],\n"web/libraries/{$name}": ["type:drupal-library"],' composer.json
+sed -i '/"installer-paths"/a "web/modules/custom/{$name}": ["type:drupal-custom-module"],\n"web/themes/custom/{$name}": ["type:drupal-custom-theme"],' composer.json
 
 composer install
 
