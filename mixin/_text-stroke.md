@@ -1,3 +1,4 @@
+~~~scss
 @function text-stroke($size: 2, $color: #fff, $correction: 0) {
   $radius: $size - $correction;
   $stroke: ();
@@ -30,3 +31,4 @@
 @mixin text-stroke($size: 2, $color: #fff, $correction: 0) {
   text-shadow: text-stroke($size, $color, $correction);
 }
+~~~
