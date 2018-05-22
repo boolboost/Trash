@@ -28,4 +28,7 @@ composer require drupal/devel
 sudo setfacl -dR -m u:$(whoami):rwX -m u:82:rwX -m u:100:rX .
 sudo setfacl -R -m u:$(whoami):rwX -m u:82:rwX -m u:100:rX .
 
+docker-compose stop
+docker-compose up -d
+
 exit 0
