@@ -19,6 +19,9 @@ mkdir web/modules/custom
 mkdir web/themes/custom
 mkdir web/themes/contrib
 
+docker-compose stop
+docker-compose up -d
+
 composer install
 
 composer require wikimedia/composer-merge-plugin
