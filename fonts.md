@@ -1,6 +1,7 @@
 # font-weight
 
 ```
+400,700 - Regular
 100	- Thin (Hairline)
 200	- Extra Light (Ultra Light)
 300	- Light
