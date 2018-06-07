@@ -1,4 +1,4 @@
-# Названия шрифта css weight
+# font-weight
 
 ```
 100	- Thin (Hairline)
@@ -10,4 +10,18 @@
 700	- Bold
 800	- Extra Bold (Ultra Bold)
 900	- Black (Heavy)
+```
+
+# font-stretch
+
+```
+ultra-condensed
+extra-condensed
+condensed
+semi-condensed
+normal
+semi-expanded
+expanded
+extra-expanded
+ultra-expanded
 ```
