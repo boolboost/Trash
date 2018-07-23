@@ -1,6 +1,17 @@
 # Install
 https://niklan.net/blog/172
 
+## Alias
+~~~
+alias drush="docker-compose exec --user 82 php drush"
+alias drupal="docker-compose exec --user 82 php drupal"
+alias composer="docker-compose exec --user 82 php composer"
+
+alias i:docker4drupal="wget $(curl -s https://api.github.com/repos/wodby/docker4drupal/releases/latest | grep browser_download_url | cut -d '"' -f 4)
+tar -xvzf docker4drupal.tar.gz
+rm docker4drupal.tar.gz"
+~~~
+
 ## Base Modules
 
 ~~~
