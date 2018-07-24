@@ -10,6 +10,9 @@ alias composer="docker-compose exec --user 82 php composer"
 alias i:docker4drupal="wget $(curl -s https://api.github.com/repos/wodby/docker4drupal/releases/latest | grep browser_download_url | cut -d '"' -f 4)
 tar -xvzf docker4drupal.tar.gz
 rm docker4drupal.tar.gz"
+alias i:drupal-project="git clone https://github.com/drupal-composer/drupal-project.git some-dir
+cp -r some-dir/. ./ && rm -rf some-dir/
+composer install"
 ~~~
 
 ## Base Modules
