@@ -11,7 +11,8 @@ alias i:docker4drupal="wget $(curl -s https://api.github.com/repos/wodby/docker4
 tar -xvzf docker4drupal.tar.gz
 rm docker4drupal.tar.gz"
 alias i:drupal-project="git clone https://github.com/drupal-composer/drupal-project.git some-dir
-cp -r some-dir/. ./ && rm -rf some-dir/
+cp -r some-dir/. ./
+rm -rf some-dir/
 composer install"
 ~~~
 
