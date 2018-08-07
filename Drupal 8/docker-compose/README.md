@@ -10,8 +10,8 @@ alias composer="docker-compose exec --user 82 php composer"
 alias i:docker4drupal="wget $(curl -s https://api.github.com/repos/wodby/docker4drupal/releases/latest | grep browser_download_url | cut -d '"' -f 4)
 tar -xvzf docker4drupal.tar.gz
 rm docker4drupal.tar.gz
-sed -i "0,/PROJECT_NAME=/s/PROJECT_NAME=.*/PROJECT_NAME=$(basename $(pwd))/" .env
-sed -i "0,/PROJECT_BASE_URL=/s/PROJECT_BASE_URL=.*/PROJECT_BASE_URL=$(basename $(pwd))/" .env"
+sed -i '0,/PROJECT_NAME=/s/PROJECT_NAME=.*/PROJECT_NAME=$(basename $(pwd))/' .env
+sed -i '0,/PROJECT_BASE_URL=/s/PROJECT_BASE_URL=.*/PROJECT_BASE_URL=$(basename $(pwd))/' .env"
 
 alias i:drupal-project="git clone https://github.com/drupal-composer/drupal-project.git some-dir
 cp -r some-dir/. ./
