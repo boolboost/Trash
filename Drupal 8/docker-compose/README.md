@@ -71,14 +71,12 @@ docker-compose restart
 ## Export mariadb
 
 ~~~
-docker ps
 docker exec -i $(docker-compose ps -q mariadb) mysqldump -udrupal -pdrupal drupal > dump.sql
 ~~~
 
 ## Import mariadb
 
 ~~~
-docker ps
 docker exec -i $(docker-compose ps -q mariadb) mysql -udrupal -pdrupal drupal < dump.sql
 ~~~
 
