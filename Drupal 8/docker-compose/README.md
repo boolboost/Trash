@@ -93,3 +93,12 @@ docker-compose up -d --force-recreate mariadb
 ~~~
 ifconfig docker0
 ~~~
+
+## Fix user permission
+
+> Not recommended.
+
+~~~
+sudo setfacl -dR -m u:$(whoami):rwX -m u:82:rwX -m u:100:rX .
+sudo setfacl -R -m u:$(whoami):rwX -m u:82:rwX -m u:100:rX .
+~~~
