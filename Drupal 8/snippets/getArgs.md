@@ -1,6 +1,24 @@
+## Simple args
 ``` php
 $current_path = \Drupal::service('path.current')->getPath();
-$path_args = explode('/', $current_path);
+$args = explode('/', $current_path);
 unset($path_args[0]);
-$path_args = array_values($path_args);
+$args = array_values($path_args);
+```
+
+## Raw Parameters
+``` php
+$arguments = \Drupal::routeMatch()->getRawParameters()->all();
+
+// Example
+$view->setArguments($arguments);
+```
+
+## Parameters
+
+```
+$parameters = \Drupal::routeMatch()->getParameters();
+
+// Example
+$node = \Drupal::routeMatch()->getParameter('node');
 ```
