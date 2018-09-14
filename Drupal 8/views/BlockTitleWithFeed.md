@@ -8,35 +8,18 @@ function HOOK_preprocess_page_title(&$variables) {
   $variables['is_feed'] = FALSE;
 
   if ($view_id = \Drupal::routeMatch()->getParameter('view_id')) {
-    $view = Views::getView($view_id);
     $current_display = \Drupal::routeMatch()->getParameter('display_id');
+
+    $view = Views::getView($view_id);
+    $parameters = \Drupal::routeMatch()->getRawParameters();
+
     $displays = $view->storage->get('display');
 
     foreach ($displays as $display_id => &$display) {
       if ($display['display_plugin'] == 'feed') {
         if ($display['display_options']['displays'][$current_display] == $current_display) {
+          $view->setArguments($parameters->all());
           $view->execute($current_display);
-
-          // Fixed args for views taxonomy_term.
-          $path = $view->getPath();
-
-          $args = [];
-          if (preg_match('#^taxonomy/term/%#', $path)) {
-            // Get path args.
-            $current_path = \Drupal::service('path.current')->getPath();
-            $path_args = explode('/', $current_path);
-            unset($path_args[0]);
-            $path_args = array_values($path_args);
-
-            $args[0] = $path_args[2];
-          }
-
-          $view->feedIcons = array_filter($view->feedIcons, function ($value) {
-            return $value['#title'];
-          });
-
-          $view->preExecute($args);
-          $view->build();
 
           $variables['is_feed'] = TRUE;
           $variables['feed_icons'] = $view->feedIcons;
