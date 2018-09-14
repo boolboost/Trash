@@ -17,7 +17,9 @@ function HOOK_preprocess_page_title(&$variables) {
 
     foreach ($displays as $display_id => &$display) {
       if ($display['display_plugin'] == 'feed') {
-        if ($display['display_options']['displays'][$current_display] == $current_display) {
+        $display_options = &$display['display_options'];
+
+        if (isset($display_options['displays']) && $display_options['displays'][$current_display] == $current_display) {
           $view->setArguments($arguments);
           $view->execute($current_display);
 
