@@ -1,0 +1,81 @@
+## THEME.theme
+
+``` php
+/**
+ * Implements HOOK_preprocess_THEME() for page title.
+ */
+function HOOK_preprocess_page_title(&$variables) {
+  $variables['is_feed'] = FALSE;
+
+  if ($view_id = \Drupal::routeMatch()->getParameter('view_id')) {
+    $view = Views::getView($view_id);
+    $current_display = \Drupal::routeMatch()->getParameter('display_id');
+    $displays = $view->storage->get('display');
+
+    foreach ($displays as $display_id => &$display) {
+      if ($display['display_plugin'] == 'feed') {
+        if ($display['display_options']['displays'][$current_display] == $current_display) {
+          $view->execute($display_id);
+          $title = $view->getTitle();
+
+          // Views taxonomy_term.
+          if ($title === '') {
+            $request = \Drupal::request();
+            $route_match = \Drupal::routeMatch();
+            $title = \Drupal::service('title_resolver')
+              ->getTitle($request, $route_match->getRouteObject())['#markup'];
+          }
+
+          // Fixed args for views taxonomy_term.
+          $path = $view->getPath();
+
+          $args = [];
+          if (preg_match('#^taxonomy/term/%#', $path)) {
+            // Get path args.
+            $current_path = \Drupal::service('path.current')->getPath();
+            $path_args = explode('/', $current_path);
+            unset($path_args[0]);
+            $path_args = array_values($path_args);
+
+            $args[0] = $path_args[2];
+          }
+
+          // Get to url.
+          $url = $view->getUrl($args)->setOption('absolute', TRUE)->toString();
+
+          $variables['is_feed'] = TRUE;
+          $variables['feed_icons'] = [
+            '#theme' => 'feed_icon',
+            '#url' => $url,
+            '#title' => $title,
+          ];
+          break;
+        }
+      }
+    }
+  }
+}
+```
+
+## page-title.html.twig
+``` twig
+{#
+/**
+ * @file
+ * Theme override for page titles.
+ *
+ * Available variables:
+ * - title_attributes: HTML attributes for the page title element.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title: The page title, for use in the actual content.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ */
+#}
+{{ title_prefix }}
+{% if title %}
+  <h1{{ title_attributes.addClass('page-title') }}>{{ title }}{% if is_feed %} {{ feed_icons }}{% endif %}</h1>
+{% endif %}
+{{ title_suffix }}
+```
