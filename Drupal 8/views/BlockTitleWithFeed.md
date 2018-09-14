@@ -11,14 +11,14 @@ function HOOK_preprocess_page_title(&$variables) {
     $current_display = \Drupal::routeMatch()->getParameter('display_id');
 
     $view = Views::getView($view_id);
-    $parameters = \Drupal::routeMatch()->getRawParameters();
+    $arguments = \Drupal::routeMatch()->getRawParameters()->all();
 
     $displays = $view->storage->get('display');
 
     foreach ($displays as $display_id => &$display) {
       if ($display['display_plugin'] == 'feed') {
         if ($display['display_options']['displays'][$current_display] == $current_display) {
-          $view->setArguments($parameters->all());
+          $view->setArguments($arguments);
           $view->execute($current_display);
 
           $variables['is_feed'] = TRUE;
