@@ -15,16 +15,7 @@ function HOOK_preprocess_page_title(&$variables) {
     foreach ($displays as $display_id => &$display) {
       if ($display['display_plugin'] == 'feed') {
         if ($display['display_options']['displays'][$current_display] == $current_display) {
-          $view->execute($display_id);
-          $title = $view->getTitle();
-
-          // Views taxonomy_term.
-          if ($title === '') {
-            $request = \Drupal::request();
-            $route_match = \Drupal::routeMatch();
-            $title = \Drupal::service('title_resolver')
-              ->getTitle($request, $route_match->getRouteObject())['#markup'];
-          }
+          $view->execute($current_display);
 
           // Fixed args for views taxonomy_term.
           $path = $view->getPath();
@@ -40,15 +31,15 @@ function HOOK_preprocess_page_title(&$variables) {
             $args[0] = $path_args[2];
           }
 
-          // Get to url.
-          $url = $view->getUrl($args)->setOption('absolute', TRUE)->toString();
+          $view->feedIcons = array_filter($view->feedIcons, function ($value) {
+            return $value['#title'];
+          });
+
+          $view->preExecute($args);
+          $view->build();
 
           $variables['is_feed'] = TRUE;
-          $variables['feed_icons'] = [
-            '#theme' => 'feed_icon',
-            '#url' => $url,
-            '#title' => $title,
-          ];
+          $variables['feed_icons'] = $view->feedIcons;
           break;
         }
       }
