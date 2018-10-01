@@ -1,4 +1,4 @@
-##Get Entity.
+## Get Entity.
 
 ``` php
 $entity = &$variables['item']->getEntity();
