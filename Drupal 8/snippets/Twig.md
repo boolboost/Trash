@@ -28,3 +28,18 @@ $render = [
   {{ item.value|format_date('long') }}
 {%- endfor -%}
 ```
+## Media logotype
+
+``` twig
+{% set url = file_url(elements['#media'].field_link.uri.value) %}
+
+{% if url %}
+  <a href="{{ url }}">
+{% endif %}
+
+{{ content.thumbnail }}
+
+{% if url %}
+  </a>
+{% endif %}
+```
