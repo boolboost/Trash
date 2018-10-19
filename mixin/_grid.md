@@ -1,15 +1,12 @@
-## lost-grid
+## Lost waffle gutter vertical
 ~~~ scss
-@mixin grid($col: 4, $gap: 16px) {
-  lost-flex-container: row;
+@mixin lost-waffle-gutter-vertical($column, $gutter) {
+  &:nth-child(1n) {
+    margin-bottom: $gutter;
+  }
 
-  > * {
-    lost-column: 1/#{$col} flex #{$gap};
-    margin-top: #{$gap};
-
-    &:nth-child(-n+#{$col}) {
-      margin-top: 0;
-    }
+  &:nth-last-child(-n + #{$column}) {
+    margin-bottom: 0;
   }
 }
 ~~~
