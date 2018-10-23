@@ -194,6 +194,9 @@ function insertBefore(el, refEl) {
 function insertAfter(el, refEl) {
   refEl.parentNode.insertBefore(el, refEl.nextSibling);
 }
+
+// Append
+context.appendChild(el);
 ~~~
 
 # Events
