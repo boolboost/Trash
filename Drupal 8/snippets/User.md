@@ -25,3 +25,12 @@ function HOOK_preprocess_user(&$variables) {
   $variables['profile'] = $storage->loadDefaultByUser($variables['user'], 'profile');
 }
 ```
+## Count posts with author.
+``` php
+$query = \Drupal::database()->select('node_field_data');
+$query->addExpression('COUNT(DISTINCT nid)');
+$query->condition('status', TRUE);
+$query->condition('type', 'blog_post');
+$query->condition('uid', $uid);
+$count = $query->execute()->fetchField(0);
+```
