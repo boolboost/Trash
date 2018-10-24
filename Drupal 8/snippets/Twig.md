@@ -4,6 +4,10 @@
 {{ path('entity.node.canonical', {'node': node.id}) }}
 {{ path('entity.comment.canonical', {'comment': comment.id}, {'fragment': 'comment-' ~ comment.id}) }}
 ```
+## ! Does not work
+``` twig
+{{ entity.toUrl }}
+```
 
 ## Get url to File
 ``` twig
