@@ -1,3 +1,15 @@
+## Get url to Entity
+``` twig
+{{ path('entity.user.canonical', {'user': user.id}) }}
+{{ path('entity.node.canonical', {'node': node.id}) }}
+{{ path('entity.comment.canonical', {'comment': comment.id}, {'fragment': 'comment-' ~ comment.id}) }}
+```
+
+## Get url to File
+``` twig
+{{ file_url(elements['#media'].field_link.uri.value) }}
+```
+
 ## Inline Template
 
 ``` php
