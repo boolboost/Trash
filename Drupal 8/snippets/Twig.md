@@ -4,9 +4,14 @@
 {{ path('entity.node.canonical', {'node': node.id}) }}
 {{ path('entity.comment.canonical', {'comment': comment.id}, {'fragment': 'comment-' ~ comment.id}) }}
 ```
-## ! Does not work
-``` twig
-{{ entity.toUrl }}
+## Get link to Entity
+``` php
+/**
+ * Implements hook_preprocess_THEME().
+ */
+function hook_preprocess_media(&$variables) {
+  $variables['author_name'] = $media->get('uid')->entity->toLink();
+}
 ```
 
 ## Get url to File
