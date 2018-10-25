@@ -10,7 +10,9 @@
  * Implements hook_preprocess_THEME().
  */
 function hook_preprocess_media(&$variables) {
-  $variables['author_name'] = $media->get('uid')->entity->toLink();
+  $entity = $variables['node'];
+  $variables['author_link'] = $entity->get('uid')->entity->toLink();
+  $variables['author_url'] = $entity->toUrl()->toString(TRUE)->getGeneratedUrl();
 }
 ```
 
