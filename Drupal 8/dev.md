@@ -2,6 +2,13 @@
 cp web/sites/example.settings.local.php web/sites/default/settings.local.php
 ```
 
+Uncomment "web/sites/default/settings.php"
+``` php
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
+```
+
 Uncomment "web/sites/default/settings.local.php"
 ``` php
 $settings['cache']['bins']['render'] = 'cache.backend.null';
