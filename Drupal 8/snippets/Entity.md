@@ -21,11 +21,21 @@ if ($form['#fields']) {
 ```
 
 ## Load All Entities
+
 ``` php
 $ids = \Drupal::entityQuery('commerce_product')->execute();
 
 $storage = \Drupal::entityTypeManager()->getStorage('commerce_product');
 $entities = $storage->loadMultiple($ids);
+
+foreach ($entities as $entity) {
+  $entity->set('stores', 1)->save();
+}
+```
+
+``` php
+$storage = \Drupal::entityTypeManager()->getStorage('commerce_product');
+$entities = $storage->loadByProperties(['type' => 'product']);
 
 foreach ($entities as $entity) {
   $entity->set('stores', 1)->save();
