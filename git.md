@@ -11,3 +11,12 @@ git push -u origin master
 ```
 git remote -v
 ```
+
+## Revert file
+
+> error: Your local changes to the following files would be overwritten by merge:
+
+```
+git checkout HEAD^ file/to/overwrite
+git pull
+```
