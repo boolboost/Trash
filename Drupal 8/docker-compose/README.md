@@ -19,6 +19,28 @@ rm -rf some-dir/
 composer install"
 ~~~
 
+## SSL
+```
+openssl genrsa -out $(basename $(pwd)).key 2048
+openssl req -new -x509 -key $(basename $(pwd)).key -out $(basename $(pwd)).cert -days 3650 -subj /CN=$(basename $(pwd))
+mkdir certs
+mv $(basename $(pwd)).key certs/
+mv $(basename $(pwd)).cert certs/
+```
+
+### docker-compose.yml
+```
+traefik:
+  image: traefik
+  command: -c /dev/null --web --docker --logLevel=INFO --defaultEntryPoints='https' --entryPoints="Name:https Address::443 TLS:/certs/${PROJECT_BASE_URL}.cert,/certs/${PROJECT_BASE_URL}.key" --entryPoints="Name:http Address::80"
+  ports:
+    - '80:80'
+    - '443:443'
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - ./certs:/certs
+```
+
 ## Base Modules
 
 ~~~
