@@ -11,7 +11,8 @@ alias i:docker4drupal="wget $(curl -s https://api.github.com/repos/wodby/docker4
 tar -xvzf docker4drupal.tar.gz
 rm docker4drupal.tar.gz
 sed -i \"0,/PROJECT_NAME=/s/PROJECT_NAME=.*/PROJECT_NAME=$(basename $(pwd))/\" .env
-sed -i \"0,/PROJECT_BASE_URL=/s/PROJECT_BASE_URL=.*/PROJECT_BASE_URL=$(basename $(pwd))/\" .env"
+sed -i \"0,/PROJECT_BASE_URL=/s/PROJECT_BASE_URL=.*/PROJECT_BASE_URL=$(basename $(pwd))/\" .env
+sed -i \"0,/PROJECT_NAME=/s/- '8000:80'/- '80:80'/\" docker-compose.yml"
 
 alias i:drupal-project="git clone https://github.com/drupal-composer/drupal-project.git some-dir
 cp -r some-dir/. ./
@@ -115,13 +116,4 @@ docker-compose up -d --force-recreate mariadb
 
 ~~~ sh
 ifconfig docker0
-~~~
-
-## Fix user permission
-
-> Not recommended.
-
-~~~ sh
-sudo setfacl -dR -m u:$(whoami):rwX -m u:82:rwX -m u:100:rX .
-sudo setfacl -R -m u:$(whoami):rwX -m u:82:rwX -m u:100:rX .
 ~~~
