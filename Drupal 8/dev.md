@@ -1,3 +1,5 @@
+## Variant 1
+
 ``` sh
 cp web/sites/example.settings.local.php web/sites/default/settings.local.php
 ```
@@ -24,4 +26,11 @@ parameters:
     debug: true
     auto_reload: true
     cache: false
+```
+
+## Variant 2
+
+``` sh
+drupal site:mode dev
+drupal site:mode prod
 ```
