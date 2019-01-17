@@ -1,3 +1,8 @@
+## Hide region render with debug comment.
+``` twig
+{% if page.sidebar_second|render|striptags|replace({ "\n": "" }) %}
+```
+
 ## Get url to Entity
 ``` twig
 {{ path('entity.user.canonical', {'user': user.id}) }}
