@@ -1,10 +1,28 @@
 ## Hide region render with debug comment.
-``` twig
-{% if page.sidebar_second|render|striptags|replace({ "\n": "" }) %}
+``` php
+/**
+ * Implements hook_preprocess() for disable debug in regions.
+ */
+function hook_preprocess(array &$variables, $hook) {
+  /** @var \Twig_Environment $twig_service */
+  $twig_service = \Drupal::service('twig');
+
+  $is_debug = drupal_static(__FUNCTION__, $twig_service->isDebug());
+
+  if ($is_debug) {
+    if ($hook == 'region') {
+      $twig_service->disableDebug();
+    }
+    else {
+      $twig_service->enableDebug();
+    }
+  }
+}
+
 ```
 
 ## Get url to Entity
-``` twig
+``` php
 {{ path('entity.user.canonical', {'user': user.id}) }}
 {{ path('entity.node.canonical', {'node': node.id}) }}
 {{ path('entity.comment.canonical', {'comment': comment.id}, {'fragment': 'comment-' ~ comment.id}) }}
