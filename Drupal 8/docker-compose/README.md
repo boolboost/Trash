@@ -22,7 +22,8 @@ sed -i \"0,/PROJECT_NAME=/s/- '8000:80'/- '80:80'/\" docker-compose.yml"
 alias i:drupal-project="git clone https://github.com/drupal-composer/drupal-project.git some-dir
 cp -r some-dir/. ./
 rm -rf some-dir/
-composer install"
+composer install
+mkdir -p config/sync"
 ~~~
 
 ## SSL
