@@ -19,5 +19,5 @@ $columns = db_query("SELECT * FROM INFORMATION_SCHEMA.COLUMNS where table_name =
 # Field Data
 
 ~~~
-$raw = db_query("SELECT * FROM {field_data_FIEND_NAME}")->fetchAll();
+$raw = db_query("SELECT * FROM {ENTITY_TYPE__FIEND_NAME}")->fetchAll();
 ~~~
