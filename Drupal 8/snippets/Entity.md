@@ -41,3 +41,28 @@ foreach ($entities as $entity) {
   $entity->set('stores', 1)->save();
 }
 ```
+
+## Date Single (russian)
+
+``` php
+$replace_month = [
+  'января' => 'январь',
+  'февраля' => 'февраль',
+  'марта' => 'март',
+  'апреля' => 'апрель',
+  'мая' => 'май',
+  'июня' => 'июнь',
+  'июля' => 'июль',
+  'августа' => 'август',
+  'сентября' => 'сентябрь',
+  'октября' => 'октябрь',
+  'ноября' => 'ноябрь',
+  'декабря' => 'декабрь',
+];
+
+// Convert "февраля 18, 2019" to "февраль 18, 2019".
+$variables['date'] = $formatter->format($node->getCreatedTime(), 'format');
+
+// Month to single.
+$variables['date'] = str_replace(array_keys($replace_month), array_values($replace_month), $variables['date']);
+```
