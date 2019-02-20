@@ -1,3 +1,17 @@
+## Render breadcrumbs
+
+### Preprocess
+``` php
+$block_manager = \Drupal::service('plugin.manager.block');
+$plugin_block = $block_manager->createInstance('system_breadcrumb_block', []);
+$variables['breadcrumbs'] = $plugin_block->build();
+```
+
+### Twig Tweak >= 8.x-2.x
+```
+{{ drupal_breadcrumb() }}
+```
+
 ## Hide region render with debug comment.
 ``` php
 /**
