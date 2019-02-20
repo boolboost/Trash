@@ -8,7 +8,7 @@ $variables['breadcrumbs'] = $plugin_block->build();
 ```
 
 ### Twig Tweak >= 8.x-2.x
-```
+``` twig
 {{ drupal_breadcrumb() }}
 ```
 
