@@ -9,6 +9,3 @@ if ($arguments) {
 
 $title = $view->getTitle();
 ```
-
-## Page title
-https://github.com/boolboost/Trash/blob/master/Drupal%208/snippets/getPageTitle.md
