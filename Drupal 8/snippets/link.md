@@ -3,10 +3,10 @@ use Drupal\Core\Url;
 use Drupal\Core\Link;
 
 $text = t('Button');
-$uri = '<front>';
+$path = '<front>';
 $classes = ['btn'];
 
-$url = Url::fromUri($uri);
+$url = Url::fromRoute($path);
 $link = Link::fromTextAndUrl($text, $url);
 $link = $link->toRenderable();
 $link['#attributes'] = ['class' => $classes];
