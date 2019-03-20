@@ -97,7 +97,7 @@ let parent = el.parentNode;
 /**
  * jQuery $(el).closest()
  */
-let closest = el.closest(selector));
+let closest = el.closest(selector);
 ~~~
 
 # DOM data
