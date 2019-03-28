@@ -41,3 +41,19 @@ foreach ($entities as $entity) {
   $entity->set('stores', 1)->save();
 }
 ```
+
+## Create paragraph
+
+``` php
+/** @var \Drupal\Core\Entity\EntityStorageInterface $storage_paragraph */
+$storage_paragraph = \Drupal::entityTypeManager()->getStorage('paragraph');
+
+$paragraph = $storage_paragraph->create(['type' => $paragraph_type]);
+
+$paragraph->save();
+
+$entity->get('field_paragraphs')->appendItem([
+  'target_id' => $paragraph->id(),
+  'target_revision_id' => $paragraph->getRevisionId(),
+]);
+```
