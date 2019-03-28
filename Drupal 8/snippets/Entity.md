@@ -57,3 +57,18 @@ $entity->get('field_paragraphs')->appendItem([
   'target_revision_id' => $paragraph->getRevisionId(),
 ]);
 ```
+
+## Remove paragraphs
+
+``` php
+if (!$entity->get('field_paragraphs')->isEmpty()) {
+  $paragraphs = $entity->get('field_paragraphs')->referencedEntities();
+  
+  /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+  foreach ($paragraphs as $paragraph) {
+    $paragraph->delete();
+  }
+
+  $entity->set('field_paragraphs', NULL);
+}
+```
