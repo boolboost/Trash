@@ -8,5 +8,5 @@
 # Queue run loop before success
 
 ``` sh
-while true do; drush queue-run queue_name > /dev/null 2>&1 && break; done
+while true; do drush queue-run queue_name > /dev/null 2>&1 && break; done
 ```
