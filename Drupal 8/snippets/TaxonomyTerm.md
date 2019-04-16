@@ -52,8 +52,8 @@ function hook_entity_base_field_info_alter(&$fields, \Drupal\Core\Entity\EntityT
  * Implements hook_taxonomy_menu_link_alter().
  */
 function hook_taxonomy_menu_link_alter(&$link, &$term) {
-  if (!$term->get('status')->first()->value) {
-    $link['enabled'] = 0;
+  if (!$term->get('status')->value) {
+    $link['enabled'] = FALSE;
   }
 }
 ```
