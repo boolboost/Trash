@@ -33,3 +33,15 @@ function nodeCountTid($tid) {
   return $query->execute()->fetchField();
 }
 ```
+
+# Display form status
+``` php
+/**
+ * Implements hook_entity_base_field_info_alter().
+ */
+function hook_entity_base_field_info_alter(&$fields, \Drupal\Core\Entity\EntityTypeInterface $entity_type) {
+  if ($entity_type->id() == 'taxonomy_term' && !empty($fields['status'])) {
+    $fields['status']->setDisplayConfigurable('form', TRUE);
+  }
+}
+```
