@@ -1,11 +1,11 @@
-## Get title
+**Get title.**
 ``` php
 $request = \Drupal::request();
 $route_match = \Drupal::routeMatch();
 $title = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
 ```
 
-## Set title for node in full page
+**Set title for node in full page.**
 ``` php
 /**
  * Implements hook_preprocess_THEME() for page-title.html.twig.
