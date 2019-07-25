@@ -1,6 +1,6 @@
 File `menu--categories.html.twig` (clone `core/themes/stable/templates/navigation/menu.html.twig`).
 
-~~~php
+``` php
 function theme_preprocess_menu__categories(&$variables) {
   $get_items_depth = function (&$items) use (&$get_items_depth) {
     foreach ($items as &$item) {
@@ -16,4 +16,4 @@ function theme_preprocess_menu__categories(&$variables) {
 
   $variables['items'] = $get_items_depth($variables['items']);
 }
-~~~
+```
