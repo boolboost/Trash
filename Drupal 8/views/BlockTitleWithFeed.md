@@ -1,5 +1,4 @@
-## THEME.theme
-
+**THEME.theme**
 ``` php
 /**
  * Implements HOOK_preprocess_THEME() for page title.
@@ -33,7 +32,7 @@ function HOOK_preprocess_page_title(&$variables) {
 }
 ```
 
-## page-title.html.twig
+**page-title.html.twig**
 ``` twig
 {#
 /**
