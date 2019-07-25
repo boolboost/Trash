@@ -1,18 +1,18 @@
-## Render breadcrumbs
+**Render breadcrumbs**
 
-### Preprocess
+**Preprocess**
 ``` php
 $block_manager = \Drupal::service('plugin.manager.block');
 $plugin_block = $block_manager->createInstance('system_breadcrumb_block', []);
 $variables['breadcrumbs'] = $plugin_block->build();
 ```
 
-### Twig Tweak >= 8.x-2.x
+**Twig Tweak >= 8.x-2.x**
 ``` twig
 {{ drupal_breadcrumb() }}
 ```
 
-## Hide region render with debug comment.
+**Hide region render with debug comment.**
 ``` php
 /**
  * Implements hook_preprocess() for disable debug in regions.
@@ -35,13 +35,14 @@ function hook_preprocess(array &$variables, $hook) {
 
 ```
 
-## Get url to Entity
+**Get url to Entity**
 ``` php
 {{ path('entity.user.canonical', {'user': user.id}) }}
 {{ path('entity.node.canonical', {'node': node.id}) }}
 {{ path('entity.comment.canonical', {'comment': comment.id}, {'fragment': 'comment-' ~ comment.id}) }}
 ```
-## Get link to Entity
+
+**Get link to Entity**
 ``` php
 /**
  * Implements hook_preprocess_THEME().
@@ -53,13 +54,12 @@ function hook_preprocess_media(&$variables) {
 }
 ```
 
-## Get url to File
+**Get url to File**
 ``` twig
 {{ file_url(elements['#media'].field_link.uri.value) }}
 ```
 
-## Inline Template
-
+**Inline Template**
 ``` php
 /** @var \Drupal\Core\Render\Renderer $renderer */
 $renderer = \Drupal::service("renderer");
@@ -75,21 +75,19 @@ $render = [
 ];
 ```
 
-## Format date in Node Teaser (node--teaser.html.twig)
-
+**Format date in Node Teaser (node--teaser.html.twig)**
 ``` twig
 {% set date = node.createdtime|format_date('long') %}
 ```
 
-## Format date in Node Teaser (field--node--created.html.twig)
-
+**Format date in Node Teaser (field--node--created.html.twig)**
 ``` twig
 {%- for item in element['#items'] -%}
   {{ item.value|format_date('long') }}
 {%- endfor -%}
 ```
-## Media logotype
 
+**Media logotype**
 ``` twig
 {% set url = file_url(elements['#media'].field_link.uri.value) %}
 
