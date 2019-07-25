@@ -1,17 +1,17 @@
 #Example
 
 Render button.
-~~~php
+``` php
 $link = entityform_ctools_add_link('Open', 'entityform_name', 'entityform-class',
   array(
     'attributes' => array(
       'class' => 'button',
     )
   ));
-~~~
+```
 
 Setting ctools dialog.
-~~~php
+``` php
 /**
  * Implements hook_preprocess_page().
  */
@@ -53,10 +53,10 @@ function function hook_preprocess_page() {
   
   drupal_add_js($style, 'setting');
 }
-~~~
+```
 
 Style ctools dialog.
-~~~sass
+``` scss
 #modalContent.modal-entityform-class {
   @include breakpoint($xs-media) {
     max-width: 100%;
@@ -82,13 +82,13 @@ Style ctools dialog.
     border-radius: 0 0 3px 3px;
   }
 }
-~~~
+```
 
 Fix Automatic alignment.
-~~~js
+``` js
 Drupal.behaviors.ctools_dialog_automatic_alignment = {
   attach: function (context, settings) {
     $(window).resize();
   }
 };
-~~~
+```
