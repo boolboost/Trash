@@ -2,7 +2,7 @@
 
 https://niklan.net/blog/172
 
-File `~/.bash_aliases`.
+**File `~/.bash_aliases`.**
 ~~~ sh
 alias drush="docker-compose exec php drush"
 alias drupal="docker-compose exec php drupal"
