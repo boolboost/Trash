@@ -1,8 +1,8 @@
-# Currency localization
+**Currency localization**
 
 File `commerce-price-plain.html.twig`.
 
-~~~php
+``` php
 {#
 /**
  * @file
@@ -17,4 +17,4 @@ File `commerce-price-plain.html.twig`.
  */
 #}
 {{ number|number_format(2, ',', ' ') }} {{ currency.currencyCode|trans }}
-~~~
+```
