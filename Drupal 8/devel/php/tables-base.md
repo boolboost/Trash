@@ -1,22 +1,22 @@
-# Usefull
+**Usefull**
 
 http://xandeadx.ru/blog/drupal/88
 
 https://www.w3schools.com/sql/sql_select.asp
 
-# All tables
+**All tables**
 
 ~~~
 $tables = db_query('SHOW TABLES')->fetchCol();
 ~~~
 
-# List of table columns
+**List of table columns**
 
 ~~~
 $columns = db_query("SELECT * FROM INFORMATION_SCHEMA.COLUMNS where table_name = '{TABLE}'")->fetchAllAssoc('COLUMN_NAME');
 ~~~
 
-# Field Data
+**Field Data**
 
 ~~~
 $raw = db_query("SELECT * FROM {ENTITY_TYPE__FIEND_NAME}")->fetchAll();
