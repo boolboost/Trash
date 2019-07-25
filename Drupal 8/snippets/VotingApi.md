@@ -1,4 +1,4 @@
-## Ratings with author
+**Ratings with author.**
 ``` php
 $rating = 0;
 
