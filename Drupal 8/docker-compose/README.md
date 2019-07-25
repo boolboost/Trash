@@ -1,4 +1,4 @@
-**Install**
+**Install.**
 
 https://niklan.net/blog/172
 
@@ -47,7 +47,7 @@ traefik:
     - ./certs:/certs
 ```
 
-**xDebug**
+**xDebug.**
 
 **File `docker-compose.yml`.**
 ``` yml
@@ -58,7 +58,7 @@ php:
     PHP_XDEBUG_REMOTE_CONNECT_BACK: 1
 ```
 
-**Commands docker-compose.**
+**Commands.**
 ``` sh
 // Export mariadb.
 docker exec -i $(docker-compose ps -q mariadb) mysqldump -udrupal -pdrupal drupal > dump.sql
