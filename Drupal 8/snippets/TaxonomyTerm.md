@@ -57,3 +57,89 @@ function hook_taxonomy_menu_link_alter(&$link, &$term) {
   }
 }
 ```
+
+# Additional aliases for taxonomy term.
+``` php
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Component\Render\FormattableMarkup;
+
+function _hook_get_patterns_aliases() {
+  return [
+    [
+      'bundles' => ['city'],
+      'source' => '@term_source/search',
+      'alias' => '@term_alias/search',
+    ]
+  ];
+}
+
+function _hook_get_arguments_aliases(EntityInterface $entity) {
+  $tid = $entity->id();
+  
+  return [
+    '@term_id' => $tid,
+    '@term_source' => '/taxonomy/term/' . $tid,
+    '@term_alias' => $entity->toUrl()->toString(),
+  ];
+}
+
+/**
+ * Callback taxonomy term save.
+ */
+function _hook_set_additional_aliases_for_terms(EntityInterface $entity) {
+  /** @var \Drupal\Core\Path\AliasStorageInterface $path_alias_storage */
+  $path_alias_storage = \Drupal::service('path.alias_storage');
+
+  $arguments = _hook_get_arguments_aliases($entity);
+  $patterns = _hook_get_patterns_aliases();
+
+  foreach ($patterns as $pattern) {
+    $bundles = $pattern['bundles']?? [];
+    
+    if (!$bundles || in_array($entity->bundle(), $bundles)) {
+      $source = new FormattableMarkup($pattern['source'], $arguments);
+      $alias = new FormattableMarkup($pattern['alias'], $arguments);
+
+      // Create and Update.
+      $item = $path_alias_storage->load(['source' => $source]);
+      $pid = ($item && isset($item['pid'])) ? $item['pid'] : NULL;
+      $path_alias_storage->save($source, $alias, LanguageInterface::LANGCODE_NOT_SPECIFIED, $pid);
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert() for taxonomy_term.
+ */
+function hook_taxonomy_term_insert(EntityInterface $entity) {
+  _hook_set_additional_aliases_for_terms($entity);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update() for taxonomy_term.
+ */
+function hook_taxonomy_term_update(EntityInterface $entity) {
+  _hook_set_additional_aliases_for_terms($entity);
+}
+
+/**
+ * Implements hook_taxonomy_term_delete() for taxonomy_term.
+ */
+function hook_taxonomy_term_delete(EntityInterface $entity) {
+  /** @var \Drupal\Core\Path\AliasStorageInterface $path_alias_storage */
+  $path_alias_storage = \Drupal::service('path.alias_storage');
+  
+  $arguments = _hook_get_arguments_aliases($entity);
+  $patterns = _hook_get_patterns_aliases();
+  
+  foreach ($patterns as $pattern) {
+    $bundles = $pattern['bundles']?? [];
+    
+    if (!$bundles || in_array($entity->bundle(), $bundles)) {
+      $source = new FormattableMarkup($pattern['source'], $arguments);
+
+      $path_alias_storage->delete(['source' => $source]);
+    }
+  }
+}
+```
