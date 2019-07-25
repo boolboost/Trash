@@ -1,20 +1,17 @@
-# Status
-
+**Account is authenticated.**
 ``` php
 \Drupal::currentUser()->isAuthenticated();
 \Drupal::currentUser()->isAnonymous();
 ```
 
-# Convert account to user
-
+**Get the user from the account.**
 ``` php
 $account = \Drupal::currentUser();
 $storage = \Drupal::entityTypeManager()->getStorage('user');
 $user = $storage->load($account->id());
 ```
 
-# Get profile in preprocess user
-
+**Get profile in preprocess user.**
 ``` php
 /**
  * Implements HOOK_preprocess_THEME() for user.html.twig.
@@ -25,7 +22,8 @@ function HOOK_preprocess_user(&$variables) {
   $variables['profile'] = $storage->loadDefaultByUser($variables['user'], 'profile');
 }
 ```
-## Count posts with author.
+
+**Count posts with author.**
 ``` php
 $query = \Drupal::database()->select('node_field_data');
 $query->addExpression('COUNT(DISTINCT nid)');
