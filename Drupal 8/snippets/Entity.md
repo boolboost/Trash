@@ -1,4 +1,4 @@
-## Render
+**Render**
 ``` php
 $view_builder = \Drupal::entityTypeManager()->getViewBuilder($entity_type);
 $storage = \Drupal::entityTypeManager()->getStorage($entity_type);
@@ -7,7 +7,7 @@ $view = $view_builder->view($entity, $view_mode);
 $output = \Drupal::service('renderer')->render($view);
 ```
 
-## Get field configs
+**Get field configs**
 ``` php
 if ($form['#fields']) {
   $ids = [];
@@ -20,8 +20,7 @@ if ($form['#fields']) {
 }
 ```
 
-## Load All Entities
-
+**Load All Entities**
 ``` php
 $ids = \Drupal::entityQuery('commerce_product')->execute();
 
@@ -42,8 +41,7 @@ foreach ($entities as $entity) {
 }
 ```
 
-## Create paragraph
-
+**Create paragraph**
 ``` php
 /** @var \Drupal\Core\Entity\EntityStorageInterface $storage_paragraph */
 $storage_paragraph = \Drupal::entityTypeManager()->getStorage('paragraph');
@@ -58,8 +56,7 @@ $entity->get('field_paragraphs')->appendItem([
 ]);
 ```
 
-## Remove paragraphs
-
+**Remove paragraphs**
 ``` php
 if (!$entity->get('field_paragraphs')->isEmpty()) {
   $paragraphs = $entity->get('field_paragraphs')->referencedEntities();
