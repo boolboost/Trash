@@ -1,5 +1,4 @@
-# Depth
-
+**Depth**
 ``` php
 /** @var Drupal\taxonomy\TermStorageInterface $storage */
 $storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
@@ -15,7 +14,8 @@ $max_depth = max(array_column($tree, 'depth'));
 $last_but_one = ($max_depth === 0);
 $last = ($max_depth === FALSE);
 ```
-# Count Node
+
+**Count Node**
 ``` php
 /** @var Drupal\taxonomy\TermStorageInterface $storage */
 $storage = \Drupal::entityTypeManager()->getStorage('taxonomy_term');
@@ -34,7 +34,7 @@ function nodeCountTid($tid) {
 }
 ```
 
-# Display form status
+**Display form with Status.**
 ``` php
 /**
  * Implements hook_entity_base_field_info_alter().
@@ -46,7 +46,19 @@ function hook_entity_base_field_info_alter(&$fields, \Drupal\Core\Entity\EntityT
 }
 ```
 
-# Hidden terms in taxonomy menu.
+**Put Status in "Publish Settings".**
+``` php
+/**
+ * Implements hook_form_FORM_ID_alter() for node_article_edit_form.
+ */
+function hook_form_FORM_ID_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (isset($form['status'])) {
+    $form['status']["#group"] = "options";
+  }
+}
+```
+
+**Hidden terms in taxonomy menu.**
 ``` php
 /**
  * Implements hook_taxonomy_menu_link_alter().
@@ -58,7 +70,7 @@ function hook_taxonomy_menu_link_alter(&$link, &$term) {
 }
 ```
 
-# Additional aliases for taxonomy term.
+**Additional aliases for taxonomy term.**
 ``` php
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Component\Render\FormattableMarkup;
