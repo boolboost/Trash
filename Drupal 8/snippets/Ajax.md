@@ -1,4 +1,4 @@
-## Открытие страницы в диалоговом окне программно.
+**Открытие страницы в диалоговом окне программно.**
 ``` js
 let url = `/comment/reply/${entity_type}/${entity}/${field_name}`;
 let el = document.createElement('a');
