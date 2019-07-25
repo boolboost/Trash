@@ -1,12 +1,4 @@
-## Install
-
-8.x-1.0-alpha2 - багает, ставить 1.x-dev.
-
-``` sh
-composer require 'drupal/commerce_stock:1.x-dev'
-```
-
-## Setup
+**Setup**
 
 ```
 1. Default service: "Local stock" (admin/commerce/config/stock/settings).
@@ -14,8 +6,7 @@ composer require 'drupal/commerce_stock:1.x-dev'
 3. Set widget "Simple stock transaction" (admin/commerce/config/product-variation-types/default/edit/form-display).
 ```
 
-## Programmable field value setting
-
+**Programmable field value setting**
 ``` php
 // Current stock.
 $entity->get('field_stock')->available_stock;
