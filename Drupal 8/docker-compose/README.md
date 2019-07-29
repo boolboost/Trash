@@ -60,15 +60,15 @@ php:
 
 **Commands.**
 ``` sh
-// Export mariadb.
+#Export mariadb.
 docker exec -i $(docker-compose ps -q mariadb) mysqldump -udrupal -pdrupal drupal > dump.sql
 
-// Import mariadb.
+#Import mariadb.
 docker exec -i $(docker-compose ps -q mariadb) mysql -udrupal -pdrupal drupal < dump.sql
 
-// Docker IP.
+#Docker IP.
 ifconfig docker0
 
-// Rebuild container. The command is safe for data.
+#Rebuild container. The command is safe for data.
 docker-compose up -d --force-recreate mariadb
 ```
