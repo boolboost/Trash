@@ -1,3 +1,15 @@
+## Create branch dev
+
+```
+git checkout -b dev
+```
+
+## List branch
+
+```
+git branch
+```
+
 ## Merge dev to master
 
 ```
