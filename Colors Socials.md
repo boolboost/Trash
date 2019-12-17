@@ -1,39 +1,22 @@
-`#3b5998` - Facebook
-
-`#00aced` - Twitter
-
-`#dd4b39` - Google+
-
-`#bb0000` - YouTube
-
-`#007bb6` - Linkedin
-
-`#517fa4` - Instagram
-
-`#cb2027` - Pinterest
-
-`#00bf8f` - Vine
-
-`#fffc00` - Snapchat
-
-`#a82400` - Quora
-
-`#ff0084` - Flickr
-
-`#32506d` - Tumblr
-
-`#45668e` - ВКонтакте
-
-`#aad450` - Vimeo
-
-`#0072b1` - Foursquare
-
-`#F2720C` - Одноклассники
-
-`#030303` - MySpace
-
-`#D10E06` - Last.fm
-
-`#004359` - LiveJournal
-
-`#2580C7` - "Renren - 人人网"
+```css
+:root {
+  --social-facebook: #3b5998;
+  --social-twitter: #00aced;
+  --social-youTube: #bb0000;
+  --social-linkedin: #007bb6;
+  --social-instagram: #517fa4;
+  --social-pinterest: #cb2027;
+  --social-vine: #00bf8f;
+  --social-snapchat: #fffc00;
+  --social-quora: #a82400;
+  --social-flickr: #ff0084;
+  --social-tumblr: #32506d;
+  --social-vk: #45668e;
+  --social-vimeo: #aad450;
+  --social-foursquare: #0072b1;
+  --social-ok: #F2720C;
+  --social-myspace: #030303;
+  --social-lastfm: #D10E06;
+  --social-livejournal: #004359;
+}
+```
