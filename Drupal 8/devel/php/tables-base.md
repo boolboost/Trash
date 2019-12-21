@@ -6,7 +6,7 @@ https://www.w3schools.com/sql/sql_select.asp
 
 **All tables**
 ``` php
-$tables = db_query('SHOW TABLES')->fetchCol();
+$tables = db_query("SHOW TABLES")->fetchCol();
 ```
 
 **List of table columns**
