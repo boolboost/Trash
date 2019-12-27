@@ -1,7 +1,58 @@
-**Render first image for field_images.**
+**First image.**
 ``` twig
 {{ content.field_images|filter((v, k) => k|slice(0, 1) in ['#', '0']) }}
 ```
+
+**Except the first image.**
+``` twig
+{{ content.field_images|map((v, k) => k|slice(0, 1) == '#' or k > 0? v: {'#printed': true}) }}
+```
+
+File `field.html.twig`.
+``` twig
+{% set classes = [
+  'field',
+  'field--name-' ~ field_name|clean_class,
+  'field--type-' ~ field_type|clean_class,
+  'field--label-' ~ label_display,
+] %}
+{% set title_classes = [
+  'field__label',
+  label_display == 'visually_hidden' ? 'visually-hidden',
+] %}
+
+{% if label_hidden %}
+  {% if multiple %}
+    <div{{ attributes.addClass(classes, 'field__items') }}>
+      {% for item in items %}
+        {% if item.content != {'#printed': true} %}
+          <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    {% for item in items %}
+      <div{{ attributes.addClass(classes, 'field__item') }}>{{ item.content }}</div>
+    {% endfor %}
+  {% endif %}
+{% else %}
+  <div{{ attributes.addClass(classes) }}>
+    <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>
+    {% if multiple %}
+    <div class="field__items">
+      {% endif %}
+      {% for item in items %}
+        {% if item.content != {'#printed': true} %}
+          <div{{ item.attributes.addClass('field__item') }}>{{ item.content }}</div>
+        {% endif %}
+      {% endfor %}
+      {% if multiple %}
+    </div>
+    {% endif %}
+  </div>
+{% endif %}
+```
+
 
 **Render breadcrumbs**
 
