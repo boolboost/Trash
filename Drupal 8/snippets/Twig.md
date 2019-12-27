@@ -1,3 +1,8 @@
+**Render first image for field_images.**
+``` twig
+{{ content.field_images|filter((v, k) => k|slice(0, 1) in ['#', '0']) }}
+```
+
 **Render breadcrumbs**
 
 **Preprocess**
