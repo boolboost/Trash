@@ -1,6 +1,6 @@
 **First image.**
 ``` twig
-{{ content.field_images|filter((v, k) => k|slice(0, 1) in ['#', '0']) }}
+{{ content.field_images|filter((v, k) => k == 0) }}
 ```
 
 **Except the first image.**
