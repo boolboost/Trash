@@ -5,7 +5,7 @@
 
 **Except the first image.**
 ``` twig
-{{ content.field_images|map((v, k) => k|slice(0, 1) == '#'? v: content.field_images[k+1]) }}
+{{ content.field_images|map((v, k) => k matches '/^\\d+$/'? content.field_images[k+1]: v) }}
 ```
 
 **Render breadcrumbs**
