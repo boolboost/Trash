@@ -1,6 +1,6 @@
 **Render views**
 ``` twig
-{{ {'#type': 'view', '#name': '', '#display_id': ''} }}
+{{ {'#type': 'view', '#name': '', '#display_id': '', 'arguments': [node.id]} }}
 ```
 
 **First image.**
