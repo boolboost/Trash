@@ -15,7 +15,7 @@ $view->setArguments($arguments);
 ```
 
 **Parameters.**
-```
+``` php
 $parameters = \Drupal::routeMatch()->getParameters();
 
 // Example
