@@ -33,10 +33,13 @@ $variables['breadcrumbs'] = $plugin_block->build();
  * Implements hook_preprocess() for disable debug in regions.
  */
 function hook_preprocess(array &$variables, $hook) {
-  /** @var \Twig_Environment $twig_service */
-  $twig_service = \Drupal::service('twig');
+  static $is_debug, $twig_service;
 
-  $is_debug = drupal_static(__FUNCTION__, $twig_service->isDebug());
+  if (is_null($is_debug)) {
+    /** @var \Twig_Environment $twig_service */
+    $twig_service = \Drupal::service('twig');
+    $is_debug = $twig_service->isDebug();
+  }
 
   if ($is_debug) {
     if ($hook == 'region') {
@@ -47,7 +50,6 @@ function hook_preprocess(array &$variables, $hook) {
     }
   }
 }
-
 ```
 
 **Get url to Entity**
