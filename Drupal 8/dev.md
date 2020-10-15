@@ -35,6 +35,17 @@ parameters:
     cache: false
 ```
 
+Added "composer.json".
+``` yaml
+"extra": {
+  "drupal-scaffold": {
+    "file-mapping": {
+      "[web-root]/sites/development.services.yml": false
+    }
+  }
+}
+```
+
 ## Variant 2
 
 ``` sh
