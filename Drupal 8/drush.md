@@ -17,6 +17,6 @@ drush sql-query "DELETE FROM key_value WHERE collection='system.schema' AND name
 
 SQL export/import
 ``` sh
-drush sql-dump --skip-table-list=cache,cache_* > dump.sql
+drush sql-dump --skip-tables-list=cache,cache_* > dump.sql
 mysql -udrupal -pdrupal drupal < dump.sql
 ```
