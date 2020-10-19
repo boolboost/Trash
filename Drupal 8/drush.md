@@ -14,3 +14,9 @@ Fix "The module does not exist".
 ``` sh
 drush sql-query "DELETE FROM key_value WHERE collection='system.schema' AND name='module_name';"
 ```
+
+SQL export/import
+``` sh
+drush sql-dump --skip-table-list=cache,cache_* > dump.sql
+mysql -udrupal -pdrupal drupal < dump.sql
+```
