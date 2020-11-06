@@ -5,6 +5,17 @@ $storage = \Drupal::entityTypeManager()->getStorage($entity_type);
 $entity = $storage->load($entity_id);
 $view = $view_builder->view($entity, $view_mode);
 $output = \Drupal::service('renderer')->render($view);
+
+$instance->entityDisplayRepository = $container->get('entity_display.repository');
+```
+
+**Get view modes active**
+``` php
+// Entity with display header.
+$view_mode_options = $entity_display_repository->getViewModeOptionsByBundle($entity->getEntityTypeId(), $entity->bundle());
+$view_modes = array_keys($view_mode_options);
+
+$is_display_full = in_array('full', $view_modes);
 ```
 
 **Get field configs**
