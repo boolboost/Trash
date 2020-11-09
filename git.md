@@ -4,6 +4,11 @@
 git checkout -b dev
 ```
 
+## Diff
+```
+git diff > diff.patch
+```
+
 ## List branch
 
 ```
