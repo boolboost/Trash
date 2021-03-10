@@ -34,12 +34,6 @@ php:
 
 **Commands.**
 ``` sh
-#Export mariadb.
-docker exec -i $(docker-compose ps -q mariadb) mysqldump -udrupal -pdrupal drupal > dump.sql
-
-#Import mariadb.
-docker exec -i $(docker-compose ps -q mariadb) mysql -udrupal -pdrupal drupal < dump.sql
-
 #Docker IP.
 ifconfig docker0
 
