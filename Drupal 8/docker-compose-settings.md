@@ -29,7 +29,6 @@ php:
   environment:
     PHP_XDEBUG: 1
     PHP_XDEBUG_DEFAULT_ENABLE: 1
-    PHP_XDEBUG_REMOTE_CONNECT_BACK: 1
 ```
 
 **Commands.**
